@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>AX Craft - Prototype</title>
+  </head>
+  <body>
+    <h1>考えを書いてください</h1>
+
+    <textarea id="input" rows="6" cols="60"></textarea><br><br>
+
+    <button onclick="send()">考えさせる</button>
+
+    <pre id="output"></pre>
+
+    <script>
+      async function send() {
+        const text = document.getElementById("input").value.trim();
+        document.getElementById("output").innerText = "……";
+
+        // いまは仮の返答（AI未接続でもAX Craftは始まる）
+        setTimeout(() => {
+          document.getElementById("output").innerText =
+            text ? "それ、本当にあなたの問いですか？" : "空欄はずるい。逃げる気だな？";
+        }, 600);
+      }
+    </script>
+  </body>
+</html>
