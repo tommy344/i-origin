@@ -12,18 +12,31 @@
     <button onclick="send()">考えさせる</button>
 
     <pre id="output"></pre>
-
     <script>
-      async function send() {
-        const text = document.getElementById("input").value.trim();
-        document.getElementById("output").innerText = "……";
+  function send() {
+    const text = document.getElementById("input").value.trim();
+    const output = document.getElementById("output");
 
-        // いまは仮の返答（AI未接続でもAX Craftは始まる）
-        setTimeout(() => {
-          document.getElementById("output").innerText =
-            text ? "それ、本当にあなたの問いですか？" : "空欄はずるい。逃げる気だな？";
-        }, 600);
-      }
-    </script>
+    output.innerText = "……";
+
+    const replies = text
+      ? [
+          "それ、本当にあなたの問いですか？",
+          "もう少し自分の言葉で言えそう。",
+          "急いで答えを欲しがってるように見える。"
+        ]
+      : [
+          "空欄は、答え以前の問題。",
+          "書かないという選択も、選択だね。",
+          "逃げた、とまでは言わないけど。"
+        ];
+
+    const reply = replies[Math.floor(Math.random() * replies.length)];
+
+    setTimeout(() => {
+      output.innerText = reply;
+    }, 600);
+  }
+</script>
   </body>
 </html>
